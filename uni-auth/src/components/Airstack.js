@@ -39,7 +39,12 @@ const Airstack = () => {
     return <p>Error: {error.message}</p>;
   }
 
+  if (data) {
+    console.log(data);
+  }
+
   // Render your component using the data returned by the query
+  return <div>{JSON.stringify(data, 2)}</div>;
 };
 
 export default Airstack;
