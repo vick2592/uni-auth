@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
-    "@airstack/airstack-react": "^0.2.1"
+    "@airstack/airstack-react": "^0.2.1",
+    "dotenv": "^16.3.1"
   }
 }

@@ -1,6 +1,10 @@
 import React from "react";
 import { init, useQuery } from "@airstack/airstack-react";
-init("a611deff724c4969b67a4b819d1f9fa4");
+
+// Retrieve the API key from the environment variable
+const apiKey = process.env.REACT_APP_AIRSTACK_API_KEY;
+
+init(apiKey);
 
 const query = `
   query MyQuery($identity: Identity) {
@@ -18,12 +22,69 @@ const query = `
         dappSlug
         profileName
       }
+    },
+    Wallet(input: {identity: "vitalik.eth", blockchain: ethereum}) {
+      domains(input: {limit: 50}) {
+        name
+        owner
+        resolvedAddress
+        resolverAddress
+        expiryTimestamp
+        isPrimary
+        labelName
+        labelHash
+        name
+        paymentToken {
+          name
+          symbol
+        }
+        paymentTokenCostInNativeToken
+        paymentTokenCostInUSDC
+        registrationCost
+        registrationCostInNativeToken
+        registrationCostInUSDC
+        formattedRegistrationCost
+        formattedRegistrationCostInNativeToken
+        formattedRegistrationCostInUSDC
+        subDomains(input: {limit: 50}) {
+          name
+          owner
+          resolvedAddress
+          resolverAddress
+          expiryTimestamp
+          isPrimary
+          labelName
+          labelHash
+          name
+          paymentToken {
+            name
+            symbol
+          }
+          paymentTokenCostInNativeToken
+          paymentTokenCostInUSDC
+          registrationCost
+          registrationCostInNativeToken
+          registrationCostInUSDC
+          formattedRegistrationCost
+          formattedRegistrationCostInNativeToken
+          formattedRegistrationCostInUSDC
+        }
+        subDomainCount
+        tokenId
+        ttl
+        chainId
+        blockchain
+        createdAtBlockNumber
+        createdAtBlockTimestamp
+        lastUpdatedBlockNumber
+        lastUpdatedBlockTimestamp
+      }
     }
   }
 `;
 
 const variables = {
-  identity: "0xcBFBcbFcA74955B8AB75Dec41F7b9eF36F329879",
+  identity: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
 };
 
 const Airstack = () => {
